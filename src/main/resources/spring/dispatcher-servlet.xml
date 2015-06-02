@@ -33,9 +33,16 @@
     @Scope("prototype")   设定bean的作用域 -->
     <context:component-scan base-package="com.princeli.controller.*" />
      
-    <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>
-    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>
-    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>
+    <mvc:resources mapping="/images/**" location="/WEB-INF/resources/images/" cache-period="31556926"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/resources/js/" cache-period="31556926"/>
+    <mvc:resources mapping="/css/**" location="/WEB-INF/resources/css/" cache-period="31556926"/>
+    
+    <mvc:resources mapping="/assets/**" location="/WEB-INF/resources/assets/" cache-period="31556926"/>
+    <mvc:resources mapping="/bootstrap/**" location="/WEB-INF/resources/bootstrap/" cache-period="31556926"/>
+    <mvc:resources mapping="/datepicker/**" location="/WEB-INF/resources/datepicker/" cache-period="31556926"/>
+    <mvc:resources mapping="/bower_components/**" location="/WEB-INF/resources/bower_components/" cache-period="31556926"/>
+    
+    
  
     <bean name="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" >
         <!--<property name="messageConverters">
@@ -66,17 +73,19 @@
                 <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
                 <prop key="date_format">yyyy-MM-dd</prop>
                 <prop key="number_format">#.##</prop>
+                <!-- <prop key="auto_import">common/spring.ftl as spring</prop> -->  
             </props>
         </property>
     </bean>
     <!-- FreeMarker视图解析 如返回userinfo。。在这里配置后缀名ftl和视图解析器。。 -->  
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">  
         <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView" />  
-        <property name="suffix" value=".ftl" />  
+        <property name="suffix" value=".html" />  
         <property name="contentType" value="text/html;charset=UTF-8" />
         <property name="exposeRequestAttributes" value="true" />
         <property name="exposeSessionAttributes" value="true" />
         <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="allowSessionOverride" value="true" />
     </bean>
      
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
