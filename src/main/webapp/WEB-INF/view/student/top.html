@@ -1,0 +1,50 @@
+
+	<script> 
+$(function(){
+var pathname = location.pathname;//找到这个页面的路径
+	$('.navbar-nav a').each(function(){//遍历所有a标签
+    	var href = $(this).attr('href');//获取连接地址
+    	if(href.indexOf(pathname) !=-1){//看看是不是包含当前页的路径
+        	$('.navbar-nav li').removeClass('active');//有的话首先把active全部去掉
+        	$(this).parent().addClass('active');//再给这个加上active
+    	}
+	})
+	
+	$('#myTab a').click(function (e) { 
+          //e.preventDefault();//阻止a链接的跳转行为 
+          $(this).tab('show');//显示当前选中的链接及关联的content 
+    }) 
+	
+});   
+    </script>
+    
+	<div class="navbar navbar-default">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-responsive-collapse">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+		</div>
+
+
+		<div class="navbar-collapse collapse navbar-responsive-collapse">
+			<form class="navbar-form navbar-right">
+				<input type="text" class="form-control" placeholder="Search">
+			</form>
+			<ul class="nav navbar-nav navbar-right" id="myTab">
+				<li class="active"><a href="<@basePath/>/student/index.html">Home</a></li>
+				<li><a href="<@basePath/>/student/signup.html">Signup</a></li>
+				<li><a href="<@basePath/>/student/login.html">Login</a></li>
+				<li><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">Explore<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="#">Contact us</a></li>
+						<li class="divider"></li>
+						<li><a href="<@basePath/>/student/list.html">students List</a></li>
+					</ul></li>
+			</ul>
+		</div>
+		<!-- /.nav-collapse -->
+	</div>

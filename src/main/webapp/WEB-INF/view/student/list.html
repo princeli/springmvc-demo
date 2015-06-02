@@ -1,0 +1,93 @@
+<#include "/common/student.ftl" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<style>
+.error {
+	color: #ff0000;
+	font-size: 0.9em;
+	font-weight: bold;
+}
+
+.errorblock {
+	color: #000;
+	background-color: #ffEEEE;
+	border: 3px solid #ff0000;
+	padding: 8px;
+	margin: 16px;
+}
+</style>
+	<script type="text/javascript">  
+        function toDel(id){  
+            var url = "<@basePath/>/student/del/" + id +"html?pageNum=param.pageNum&pageSize=param.pageSize";  
+            window.location.href = url;  
+        }  
+	</script>
+<title>Student Enrollment Login</title>
+</head>
+<body>
+	<#include "/student/top.html" />
+	
+	<div class="container">
+		<div class="jumbotron">
+			<div>
+				<h1>Welcome to Online Student Enrollment List</h1>
+				<p>Login to explore the complete features!</p>
+			</div>
+		</div>
+
+		<div></div>
+	</div>
+
+	<div class="col-lg-6 col-lg-offset-3">
+		<div class="well">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+ 						
+  
+        
+          
+          <table class="table table-striped  table-hover table-condensed">
+    		<thead>
+        		<tr>
+            	<th data-field="id">id</th>
+            	<th data-field="username">username</th>
+            	<th data-field="email">email</th>
+            	<th data-field="email">dateofbirth</th>
+            	<th data-field="email">操作</th>
+        		</tr>
+    		</thead>
+    		<#list list as item>  
+    		<tbody>
+    			<tr id="tr_id_1" class="tr-class-1">
+        		<td id="td_id_1" class="td-class-1">${item.id}</td>
+        		<td>${item.username}</td>
+        		<td>${item.emailaddress}</td>
+        		<td>${item.dateofbirth?date}</td>
+        		<td> <a href="javascript:toDel('${item.id}');">删除</a></td>
+    			</tr>
+    		</tbody>
+    		</#list>
+		  </table>
+ 
+          
+    	  <form method="post" id="listForm" action="list.html">  
+       
+          </form>  
+
+ 						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-6 col-lg-offset-3">
+ 		<@pager.createPager curPage=pageNum totalPage=totalPage pageSize=pageSize  totalCount=totalCount  formId="listForm"/>  
+ 	</div>
+
+</body>
+
+</html>
