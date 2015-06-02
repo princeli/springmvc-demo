@@ -3,11 +3,12 @@ USE spring4_mybatis3;
 
 DROP TABLE IF EXISTS t_user;
 CREATE TABLE t_user (
-  user_id char(32) NOT NULL,
-  user_name varchar(30) DEFAULT NULL,
-  user_birthday date DEFAULT NULL,
-  user_salary double DEFAULT NULL,
-  PRIMARY KEY (user_id)
+  id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  name varchar(30) DEFAULT NULL,
+  password varchar(30) DEFAULT NULL,
+  birthday date DEFAULT NULL,
+  salary double DEFAULT NULL,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS t_student;

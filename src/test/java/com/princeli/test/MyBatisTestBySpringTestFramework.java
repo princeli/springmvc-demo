@@ -24,17 +24,16 @@ public class MyBatisTestBySpringTestFramework {
     @Test
     public void testAddUser(){
         User user = new User();
-        user.setUserId(UUID.randomUUID().toString().replaceAll("-", ""));
-        user.setUserName("xdp_gacl_白虎神皇");
-        user.setUserBirthday(new Date());
-        user.setUserSalary(10000D);
+        user.setName("admin");
+        user.setBirthday(new Date());
+        user.setSalary(10000D);
         userService.addUser(user);
     }
     
     @Test
     public void testGetUserById(){
-        String userId = "fd7128d0f0854806af8d0d3d02f80235";
+        Long userId = 1L;
         User user = userService.getUserById(userId);
-        System.out.println(user.getUserName());
+        System.out.println(user.getName());
     }
 }

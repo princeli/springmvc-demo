@@ -228,13 +228,13 @@
 			</resource>
 		</resources>
 		<plugins>
-			<!-- <plugin> <groupId>org.mybatis.generator</groupId> <artifactId>mybatis-generator-maven-plugin</artifactId> 
+			<!--<plugin> <groupId>org.mybatis.generator</groupId> <artifactId>mybatis-generator-maven-plugin</artifactId> 
 				<version>${mybatis-generator.version}</version> <configuration> <configurationFile>src/main/resources/config/mysqlGeneratorConfig.xml</configurationFile> 
 				<verbose>false</verbose> <overwrite>false</overwrite> </configuration> <dependencies> 
 				<dependency> <groupId>org.mybatis.generator</groupId> <artifactId>mybatis-generator-core</artifactId> 
 				<version>${mybatis-generator.version}</version> </dependency> <dependency> 
 				<groupId>mysql</groupId> <artifactId>mysql-connector-java</artifactId> <version>${mysql.version}</version> 
-				</dependency> </dependencies> </plugin> -->
+				</dependency> </dependencies> </plugin>  -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

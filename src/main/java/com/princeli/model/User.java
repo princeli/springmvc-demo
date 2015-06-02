@@ -3,43 +3,53 @@ package com.princeli.model;
 import java.util.Date;
 
 public class User {
-    private String userId;
+    private Long id;
 
-    private String userName;
+    private String name;
 
-    private Date userBirthday;
+    private String password;
 
-    private Double userSalary;
+    private Date birthday;
 
-    public String getUserId() {
-        return userId;
+    private Double salary;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Date getUserBirthday() {
-        return userBirthday;
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserBirthday(Date userBirthday) {
-        this.userBirthday = userBirthday;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
-    public Double getUserSalary() {
-        return userSalary;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setUserSalary(Double userSalary) {
-        this.userSalary = userSalary;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public Double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 }

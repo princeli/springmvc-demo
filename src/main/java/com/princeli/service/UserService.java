@@ -1,6 +1,7 @@
 package com.princeli.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.princeli.model.User;
 
@@ -16,10 +17,29 @@ public interface UserService {
      * @param userId
      * @return
      */
-    User getUserById(String userId);
+    User getUserById(Long userId);
     
-    /**获取所有用户信息
-     * @return List<User>
+    /**
+     * 根据条件查询list
+     * @param map
+     * @return
      */
-    List<User> getAllUser();
+    List<User> getList(Map map);
+    
+    /**
+     * 根据条件查询数目
+     * @param map
+     * @return
+     */
+    int getCount(Map map);
+    
+	/**
+	 * 根据用户名和密码查询用户
+	 * @param name
+	 * @param password
+	 * @return
+	 */
+	boolean getUserByLogin(String name, String password);
+    
+ 
 }

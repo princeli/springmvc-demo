@@ -1,24 +1,27 @@
 package com.princeli.dao;
 
 import java.util.List;
+import java.util.Map;
 
+import com.princeli.model.Student;
 import com.princeli.model.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(String userId);
+    int deleteByPrimaryKey(Long id);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(String userId);
+    User selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
     
-    /**获取所有用户信息
-     * @return List<User>
-     */
-    List<User> getAllUser();
+    List<User> getList(Map map);
+    
+    int getCount(Map map);
+
+	User getUserByName(String name);
 }

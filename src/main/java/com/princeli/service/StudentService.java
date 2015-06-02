@@ -29,8 +29,17 @@ public interface StudentService {
 	 */
 	boolean getStudentByUserName(String userName);
 	
-	
+    /**
+     * 根据条件查询list
+     * @param map
+     * @return
+     */
     List<Student> getStudentList(Map map);
     
+    /**
+     * 根据条件查询数目
+     * @param map
+     * @return
+     */
     int getStudentCount(Map map);
 }

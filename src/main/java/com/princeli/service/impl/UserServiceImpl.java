@@ -1,11 +1,13 @@
 package com.princeli.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.princeli.dao.UserMapper;
+import com.princeli.model.Student;
 import com.princeli.model.User;
 import com.princeli.service.UserService;
  
@@ -31,12 +33,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(String userId) {
+    public User getUserById(Long userId) {
         return userMapper.selectByPrimaryKey(userId);
     }
+
+	@Override
+	public List<User> getList(Map map) {
+		return userMapper.getList(map);
+	}
+
+	@Override
+	public int getCount(Map map) {
+		return userMapper.getCount(map);
+	}
+
+	@Override
+	public boolean getUserByLogin(String name, String password) {
+		User user = userMapper.getUserByName(name);
+		
+		if(user != null && user.getPassword().equals(password)) {
+			return true;
+		}
+		
+		return false;
+	}
     
-    @Override
-    public List<User> getAllUser() {
-        return userMapper.getAllUser();
-    }
+ 
 }

@@ -39,6 +39,19 @@
     	<script src="<@basePath/>/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     	<script src="<@basePath/>/js/flot-data.js"></script>
     </#if>
+    
+	<#if name == "dataTables"> 
+    	<!-- DataTables JavaScript -->
+    	<script src="<@basePath/>/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    	<script src="<@basePath/>/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+    	<script>
+    	$(document).ready(function() {
+        	$('#dataTables-example').DataTable({
+                responsive: true
+        	});
+    	});
+    	</script>
+	</#if>
 	
 
 </#macro>
@@ -75,65 +88,88 @@
     	<link href="<@basePath/>/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     </#if>
     
+	<#if name == "dataTables"> 
+    	<!-- DataTables CSS -->
+    	<link href="<@basePath/>/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
+    	<!-- DataTables Responsive CSS -->
+    	<link href="<@basePath/>/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    </#if>
+    
+    <#if name == "social"> 
+    	<!-- Social Buttons CSS -->
+    	<link href="<@basePath/>/bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+    </#if>
 
 </#macro>
 
 <!-- js业务模块定义  导入方法 <@importjs module="index"/> -->
-<#macro importjs module> 
-	<#if module == "index">
-		<@js name="jquery"/>
+<#macro importjs module>
+	<!-- 公共js-->
+	<@js name="jquery"/>
 
-		<@js name="bootstrap"/>
+	<@js name="bootstrap"/>
 
-		<@js name="metisMenu"/>
-
-		<@js name="morris"/>
+	<@js name="metisMenu"/>
 	
-		<@js name="sbadmin"/>
+	<@js name="sbadmin"/>	
+
+	<#if module == "index">
+		<@js name="morris"/>
 	</#if>
 	
-	<#if module == "flot">
-		<@js name="jquery"/>
-
-		<@js name="bootstrap"/>
-
-		<@js name="metisMenu"/>
-	
-		<@js name="sbadmin"/>
-		
+	<#if module == "flot">		
 		<@js name="flot"/>
 	</#if>
+	
+	<#if module == "morris">
+		<@js name="morris"/>
+	</#if>
+	
+	<#if module == "tables">
+		<@js name="dataTables"/>
+	</#if>
+	
+	<#if module == "forms">
+	</#if>
+	
 </#macro>
 
 
 <!-- css业务模块定义  导入方法 <@importjs module="index"/> -->
 <#macro importcss module> 
-	<#if module == "index">
-		<@css name="bootstrap"/>
+	<!-- 公共css-->
+	<@css name="bootstrap"/>
 
-		<@css name="metisMenu"/>
+	<@css name="metisMenu"/>
 
-		<@css name="timeline"/>
+	<@css name="timeline"/>
 
-		<@css name="sbadmin"/>
+	<@css name="sbadmin"/>
 	
+	<@css name="fonts"/>
+	
+	<#if module == "index">
 		<@css name="morris"/>
-		
-		<@css name="fonts"/>
 	</#if>
 	
 	<#if module == "flot">
-		<@css name="bootstrap"/>
-
-		<@css name="metisMenu"/>
-
-		<@css name="timeline"/>
-
-		<@css name="sbadmin"/>
-	
-		<@css name="morris"/>
-		
 		<@css name="fonts"/>
 	</#if>
+	
+	<#if module == "morris">
+		<@css name="morris"/>
+	</#if>
+	
+	<#if module == "tables">
+		<@css name="dataTables"/>
+	</#if>
+	
+	<#if module == "forms">
+	</#if>
+	
+	<#if module == "buttons">
+		<@css name="social"/>
+	</#if>
+	
 </#macro>
