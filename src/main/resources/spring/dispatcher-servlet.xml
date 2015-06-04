@@ -16,6 +16,42 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd 
         http://www.springframework.org/schema/tx 
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        
+    <mvc:annotation-driven />
+        
+	 <bean class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+        <property name="validator" ref="validator"/>
+    </bean>
+     
+     <!-- 指定自己定义的validator -->
+	<mvc:annotation-driven validator="validator" />
+
+	<!-- 以下 validator ConversionService 在使用 mvc:annotation-driven 会 自动注册 -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+		<!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties 
+		<property name="validationMessageSource" ref="messageSource"/>-->
+	</bean>
+
+    <!-- 国际化的消息资源文件（本系统中主要用于显示/错误消息定制） -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <!-- 在web环境中一定要定位到classpath 否则默认到当前web应用下找  -->
+                <value>classpath:ValidationMessages</value>
+            </list>
+        </property>
+        <property name="useCodeAsDefaultMessage" value="false"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="cacheSeconds" value="60"/>
+    </bean>  
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="language"/>
+        </bean>
+    </mvc:interceptors>
  
     <!-- <mvc:annotation-driven /> -->
     <!--注解说明  
@@ -73,7 +109,7 @@
                 <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
                 <prop key="date_format">yyyy-MM-dd</prop>
                 <prop key="number_format">#.##</prop>
-                <!-- <prop key="auto_import">common/spring.ftl as spring</prop> -->  
+                <!-- --><prop key="auto_import">layout/layout.ftl as layout,common/spring.ftl as spring</prop>   
             </props>
         </property>
     </bean>
@@ -87,9 +123,6 @@
         <property name="exposeSpringMacroHelpers" value="true" />
         <property name="allowSessionOverride" value="true" />
     </bean>
-     
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
-        p:basename="i18n/messages" />
  
 <!--    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/" />

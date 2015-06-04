@@ -1,4 +1,3 @@
-<#import "/common/spring.ftl" as spring />
 <#assign c=JspTaglibs["/WEB-INF/tlds/c.tld"] />
 <#assign fmt=JspTaglibs["/WEB-INF/tlds/fmt.tld"] />
 <#assign fn=JspTaglibs["/WEB-INF/tlds/fn.tld"] />

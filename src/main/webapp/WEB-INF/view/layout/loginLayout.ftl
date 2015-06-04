@@ -1,5 +1,5 @@
 <#include "/common/params.ftl" />
-<#macro html title module>
+<#macro loginLayout title module>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,10 +13,7 @@
 
     <title>${title}</title>
 
-	
-	<@importcss module="${module}"/>
-
-
+  	<@importcss module="${module}"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,26 +25,13 @@
 </head>
 
 <body>
+	<div class="container">
+		<#nested/>
+	</div>
 
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <#include "/common/top.ftl" />
-            <#include "/common/left.ftl" />
-        </nav>
-
-        <div id="page-wrapper">
- 			<#nested/>
-        </div>
-        <!-- /#page-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-	<@importjs module="${module}"/>
-
+    <@importjs module="${module}"/>
 
 </body>
+
 </html>
 </#macro>

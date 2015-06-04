@@ -40,6 +40,13 @@ public interface UserService {
 	 * @return
 	 */
 	boolean getUserByLogin(String name, String password);
+	
+	/**
+	 * 通过用户名查询用户
+	 * @param userName
+	 * @return
+	 */
+	boolean getUserByName(String name);
     
  
 }

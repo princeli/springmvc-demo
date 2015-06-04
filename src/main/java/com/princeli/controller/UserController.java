@@ -1,9 +1,12 @@
 package com.princeli.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,15 +40,28 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@ModelAttribute("user") User user,BindException errors) {
+	public String login(@Valid @ModelAttribute("user") User user,BindingResult result) {
+		// 如果有数据校验错误，返回添加用户的页面  
+	    if (result.hasErrors()) {  
+	        return "user/login";  
+	    }  
+		
 		System.out.println("-----"+user.getName()+user.getPassword());
+		
+		boolean exists = userService.getUserByName(user.getName());
+		
+		if(!exists){
+			result.rejectValue("name", "该用户不存在", "该用户不存在"); 
+			return "user/login";
+		}
+		
+		
 		boolean found = userService.getUserByLogin(user.getName(), user.getPassword());
 		if (found) {				
 			return "user/index";
 		} else {	
-			errors.reject("ccc", "用户名或密码有误！");   
-            errors.rejectValue("name", "nameErr", null, "用户名错误");   
-            errors.rejectValue("password", "passErr", null, "密码错误");   
+			result.rejectValue("", "用户名或密码错误", "用户名或密码错误"); 
+
 			return "user/login";
 		}
 		

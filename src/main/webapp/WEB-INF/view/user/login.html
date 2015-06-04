@@ -1,26 +1,36 @@
-<#import "/common/login.ftl" as login> 
-<#include "/common/taglibs.ftl" />
-<@login.html title="SB Admin 2 - Bootstrap Admin Theme">
+<@layout.loginLayout title="SB Admin 2 - Bootstrap Admin Theme" module="login">
 <div class="row">
 	<div class="col-md-4 col-md-offset-4">
 		<div class="login-panel panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">Please Sign In</h3>
 			</div>
+			<@spring.bind "user" />
+				<#if spring.status.error>
+    			<div class="errors">
+        			There were problems with the data you entered:
+        			<ul>
+            			<#list spring.status.errorMessages as error>
+                		<li>${error}</li>
+            			</#list>
+       				 </ul>
+    			</div>
+			<#else>
+    			<div class="errors">
+        		There are no errors.
+    		</div>
+			</#if>
 			<div class="panel-body">
 				<form role="form" action="login.html" method="post">
 					<fieldset>
 						<div class="form-group">
-							<@spring.bind path="user.name" />
-							<input class="form-control" placeholder="UserName"  name="${spring.status.expression}" value="${spring.status.value?default('')}"
-								type="text" autofocus>
-							<@spring.showErrors ', ' 'error'/>
+							<@spring.formInput 'user.name' 'id="name" placeholder="UserName" class="form-control" autofocus'/>
+							<@spring.showErrors '<br>' 'has-error'/>
 						</div>
 						<div class="form-group">
-							<@spring.bind path="user.password" />
-							<input class="form-control" placeholder="Password"  name="${spring.status.expression}" value="${spring.status.value?default('')}"
-								type="password" autofocus>
-							<@spring.showErrors ', ' 'error'/>
+							<@spring.formPasswordInput 'user.password' 'id="password" placeholder="Password" class="form-control" autofocus'/>
+							
+							<@spring.showErrors '<br>' 'has-error'/>
 
 						</div>
 						<div class="checkbox">
@@ -36,4 +46,4 @@
 		</div>
 	</div>
 </div>
-</@login.html>
+</@layout.loginLayout>
