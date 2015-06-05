@@ -33,8 +33,8 @@ public class MyBatisTest {
         //ApplicationContext ac = new ClassPathXmlApplicationContext(new String[]{"spring.xml","spring-mybatis.xml"});
         //UserServiceI userService = (UserServiceI) ac.getBean("userService");
         User user = new User();
-        user.setName("admin");
-        user.setPassword("admin");
+        user.setName("赵六");
+        user.setPassword("123456");
         user.setBirthday(new Date());
         user.setSalary(10000D);
         userService.addUser(user);

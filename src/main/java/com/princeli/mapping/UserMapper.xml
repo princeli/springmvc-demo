@@ -117,5 +117,12 @@
 			AND name like '%#{name}%'
 		</if>
  </select>  
+ 
+ 
+   <select id="getAllList"  resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		FROM t_user
+  </select>
 
 </mapper>

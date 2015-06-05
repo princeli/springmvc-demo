@@ -47,6 +47,8 @@ public interface UserService {
 	 * @return
 	 */
 	boolean getUserByName(String name);
+	
+	List<User> getAllList();
     
  
 }

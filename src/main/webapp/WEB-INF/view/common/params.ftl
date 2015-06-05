@@ -53,6 +53,11 @@
     	</script>
 	</#if>
 	
+	<#if name == "user.list"> 
+    	<!-- DataTables JavaScript -->
+    	<script src="<@basePath/>/js/user/list-data.js"></script>
+	</#if>
+	
 
 </#macro>
 
@@ -133,6 +138,11 @@
 	<#if module == "forms">
 	</#if>
 	
+	<#if module == "user.list">
+		<@js name="dataTables"/>
+		<@js name="user.list"/>
+	</#if>
+	
 </#macro>
 
 
@@ -170,6 +180,10 @@
 	
 	<#if module == "buttons">
 		<@css name="social"/>
+	</#if>
+	
+	<#if module == "tables">
+		<@css name="dataTables"/>
 	</#if>
 	
 </#macro>

@@ -33,17 +33,18 @@
 
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <#include "/common/top.ftl" />
-            <#include "/common/left.ftl" />
+            <#include "/layout/top.ftl" />
         </nav>
-
-        <div id="page-wrapper">
- 			<#nested/>
-        </div>
-        <!-- /#page-wrapper -->
-
+        
     </div>
     <!-- /#wrapper -->
+    
+    <#include "/layout/left.ftl" />
+    
+    <div id="page-wrapper">
+ 			<#nested/>
+    </div>
+    <!-- /#page-wrapper -->
 
 	<@importjs module="${module}"/>
 

@@ -24,4 +24,6 @@ public interface UserMapper {
     int getCount(Map map);
 
 	User getUserByName(String name);
+	
+	List<User> getAllList();
 }

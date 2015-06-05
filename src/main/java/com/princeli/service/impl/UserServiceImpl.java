@@ -68,6 +68,11 @@ public class UserServiceImpl implements UserService {
 		
 		return false;
 	}
+	
+	@Override
+	public List<User> getAllList(){
+		return userMapper.getAllList();
+	}
     
  
 }
