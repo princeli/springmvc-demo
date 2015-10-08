@@ -4,12 +4,26 @@
 <#macro js name> 
 	<#if name == "jquery"> 
 		<!-- jQuery -->
-    	<script src="<@basePath/>/bower_components/jquery/dist/jquery.min.js"></script>
+    	<!--<script src="<@basePath/>/bower_components/jquery/dist/jquery.min.js"></script>-->
+    	<script src="<@basePath/>/bower_components/jquery/dist/jquery-1.11.1.min.js"></script>
 	</#if>
 	
 	<#if name == "bootstrap"> 
     	<!-- Bootstrap Core JavaScript -->
     	<script src="<@basePath/>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	</#if>
+	
+	<#if name == "sbadmin"> 
+    	<!-- Custom Theme JavaScript -->
+    	<script src="<@basePath/>/assets/js/sb-admin-2.js"></script>
+	</#if>
+	
+	<#if name == "html5"> 
+    	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+    	<script src="<@basePath/>/assets/js/respond.min.js"></script>
+    	<script src="<@basePath/>/assets/js/html5shiv.min.js"></script>
+    	<![endif]-->
 	</#if>
 	
 	<#if name == "metisMenu"> 
@@ -24,10 +38,7 @@
     	<script src="<@basePath/>/js/morris-data.js"></script>
 	</#if>
 	
-	<#if name == "sbadmin"> 
-    	<!-- Custom Theme JavaScript -->
-    	<script src="<@basePath/>/assets/js/sb-admin-2.js"></script>
-	</#if>
+
 	
 	 <#if name == "flot">    
         <!-- Flot Charts JavaScript -->
@@ -118,6 +129,8 @@
 	<@js name="metisMenu"/>
 	
 	<@js name="sbadmin"/>	
+	
+	<@js name="html5"/>
 
 	<#if module == "index">
 		<@js name="morris"/>
